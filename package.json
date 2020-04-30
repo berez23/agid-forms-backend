@@ -7,7 +7,7 @@
     "node": "8.11.3"
   },
   "scripts": {
-    "prepare": "patch-package",
+    "prepare": "yarn run snyk-protect && patch-package",
     "build": "tsc",
     "watch": "tsc -w",
     "build-noemit": "tsc --noEmit",
@@ -24,7 +24,8 @@
     "generate": "npm-run-all -s generate:**",
     "run-processor": "node src/workers/start.js",
     "run-processor:reload": "nodemon src/workers/start.js",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -73,7 +74,8 @@
     "redis-clustr": "^1.6.0",
     "ulid": "^2.2.2",
     "winston": "^3.0.0",
-    "xmldom": "^0.1.27"
+    "xmldom": "^0.1.27",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/bull": "^3.5.14",
@@ -146,5 +148,6 @@
     "graphql": "^14.3.1",
     "io-ts": "^1.8.5",
     "fp-ts": "^1.18.2"
-  }
+  },
+  "snyk": true
 }
